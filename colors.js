@@ -115,7 +115,7 @@ class ColorGame {
         if (this.currentDifficulty !== difficulty) {
             let currentActiveButton = document.querySelector(".active");
             currentActiveButton.classList.remove("active");
-            document.querySelector("div[value=\"" + difficulty + "\"]").classList.add("active");
+            document.querySelector("[value=\"" + difficulty + "\"]").classList.add("active");
             this.reset();
         }
     }

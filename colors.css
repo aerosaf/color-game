@@ -45,13 +45,16 @@ span#currentColor {
     color: white;
     display: flex;
     justify-content: space-between;
-    cursor: pointer;
 }
 
 #new-colors {
     padding: 2px 10px;
     transition: all 0.3s;
     flex: 1;
+}
+
+span {
+    cursor: pointer;
 }
 
 #new-colors:hover {
@@ -70,37 +73,16 @@ span#currentColor {
 }
 
 .difficulty div {
-    padding: 2px 10px
+    padding: 2px 10px;
+    transition: all 0.3s;
+    flex: 1;
+}
+
+.difficulty div:hover  {
+    color: #717171
 }
 
 .active {
-    color: #717171
-}
-
-#easy:hover {
-    color: #717171
-}
-
-#easy {
-    transition: all 0.3s;
-    flex: 1;
-}
-
-#normal {
-    transition: all 0.3s;
-    flex: 1;
-}
-
-#normal:hover {
-    color: #717171
-}
-
-#hard {
-    transition: all 0.3s;
-    flex: 1;
-}
-
-#hard:hover {
     color: #717171
 }
 
