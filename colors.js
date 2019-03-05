@@ -74,16 +74,16 @@ class ColorGame {
     }
 
     setEventHandler() {
-        this.easyButton.addEventListener("click", () => {
-            this.setDifficulty('easy');
+        this.easyButton.addEventListener("click", (event) => {
+            this.setDifficulty(event.target.getAttribute("value"));
         });
 
         this.normalButton.addEventListener("click", () => {
-            this.setDifficulty('normal');
+            this.setDifficulty(event.target.getAttribute("value"));
         });
 
         this.hardButton.addEventListener("click", () => {
-            this.setDifficulty('hard');
+            this.setDifficulty(event.target.getAttribute("value"));
         });
 
         this.resetButton.addEventListener("click", () => {
@@ -97,11 +97,11 @@ class ColorGame {
             this.changeColorAllSquare(this.pickedColor);
             this.headerH1.style.backgroundColor = this.pickedColor;
             this.displayNotification.textContent = "Correct!";
-            this.displayNotification.style.color = "rgb(76, 196, 128)";
+            this.displayNotification.style.color = "rgb(94, 239, 129)";
         } else {
             event.target.style.backgroundColor = "black";
             this.displayNotification.textContent = "Try Again!";
-            this.displayNotification.style.color = "rgb(190, 53, 71)";
+            this.displayNotification.style.color = "rgb(251, 40, 24)";
         }
     }
 
@@ -112,33 +112,17 @@ class ColorGame {
     }
 
     setDifficulty(difficulty) {
-        if (difficulty === 'easy' && (this.currentDifficulty === 9 || this.currentDifficulty === 12)) {
-            this.easyButton.classList.add("active");
-            this.normalButton.classList.remove("active");
-            this.hardButton.classList.remove("active");
-            this.reset();
-        } else if (difficulty === 'normal' && (this.currentDifficulty === 6 || this.currentDifficulty === 12)) {
-            this.easyButton.classList.remove("active");
-            this.normalButton.classList.add("active");
-            this.hardButton.classList.remove("active");
-            this.reset();
-        } else if (difficulty === 'hard' && (this.currentDifficulty === 6 || this.currentDifficulty === 9)) {
-            this.easyButton.classList.remove("active");
-            this.normalButton.classList.remove("active");
-            this.hardButton.classList.add("active");
+        if (this.currentDifficulty !== difficulty) {
+            let currentActiveButton = document.querySelector(".active");
+            currentActiveButton.classList.remove("active");
+            document.querySelector("div[value=\"" + difficulty + "\"]").classList.add("active");
             this.reset();
         }
     }
 
     getCurrentDifficulty() {
         let active = document.querySelector(".active");
-        if (active.id === 'easy') {
-            this.currentDifficulty = 6;
-        } else if (active.id === 'normal') {
-            this.currentDifficulty = 9;
-        } else if (active.id === 'hard') {
-            this.currentDifficulty = 12
-        }
+        this.currentDifficulty = active.getAttribute("value");
     }
 
     reset() {
